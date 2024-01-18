@@ -1,50 +1,24 @@
-'use client'
-import { useEffect, useState } from 'react';
+'use client';
+import React from 'react';
+import { useScroll } from '../hooks/useScroll';
+import { Logo } from './Logo';
+import { UserProfile } from './UserProfile';
+import { NavLinks } from '@/app/components/NavLinks';
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll); // cleanup
-    }
-  }, []);
+  const isScrolled = useScroll();
 
   return (
-    <header className={`
-    ${isScrolled && 'bg-black'} 
-    fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 lg:px-10 lg:py-6 transition-all`}>
-      <div className='
-        flex
-        items-center
-        space-x-2
-        md:space-x-4
-      '>
-
-        <img src="https://rb.gy/ulxxee" alt="Netflix" width={120} height={120} />
-        <ul className='hidden md:flex md:space-x-4'>
-          <li>Home</li>
-          <li>TV Shows</li>
-          <li>Movies</li>
-          <li>Latest</li>
-        </ul>
-
-
+    <header
+      className={`${isScrolled && 'bg-black'}
+      fixed top-0 z-50
+      flex w-full items-center justify-between bg-gradient-to-t from-transparent to-black p-2 transition-all lg:px-10 lg:py-4`}
+    >
+      <div className='flex items-center space-x-2 md:space-x-8'>
+        <Logo />
+        <NavLinks />
       </div>
-      <div className='flex items-center space-x-4'>
-        <p className='hidden cursor-not-allowed lg:inline'>Kids</p>
-        <img
-          src='https://rb.gy/g1pwyx'
-          alt=''
-          className='cursor-pointer rounded'
-        />
-      </div>
+      <UserProfile />
     </header>
   );
 }
