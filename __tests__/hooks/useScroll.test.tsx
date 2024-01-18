@@ -1,7 +1,7 @@
 import { useScroll } from '@/app/hooks/useScroll';
+import { describe, expect, it } from '@jest/globals';
 import { act, renderHook } from '@testing-library/react';
-import { describe, it } from 'jest-circus';
-import expect from 'expect';
+
 describe('useScroll', () => {
   it('should respond to scroll events', () => {
     const { result } = renderHook(() => useScroll());
