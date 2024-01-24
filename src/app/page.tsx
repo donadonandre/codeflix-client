@@ -44,7 +44,24 @@ export default function Home() {
             More Info
           </button>
         </div>
+
+        <div className='flex-col space-y-4'>
+          <div className='flex space-x-4 overflow-x-scroll'>
+            {[1,2,3,4,5,].map((index) => (
+              <div key={index} className='group relative h-28 min-w-[200px]
+                transition duration-200 ease-in transform sm:h-36 hover:scale-110 hover:z-50
+              '>
+                <Image
+                  src={`/item_${index}.png`}
+                  alt='MAID'
+                  fill={true}
+                  className='rounded'
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </main>
     </div>
-  );
-}
+            );
+          }
