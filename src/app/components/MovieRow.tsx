@@ -1,6 +1,8 @@
 import Image from 'next/image';
 
-export function MovieRow({ sectionTitle }: { sectionTitle: String }) {
+type MovieRowsProps = { sectionTitle: String };
+
+export function MovieRow({ sectionTitle }: MovieRowsProps) {
   return (
     <div className='flex-col space-y-4'>
       <div className='flex'>
