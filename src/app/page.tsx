@@ -3,11 +3,11 @@ import { Inter } from 'next/font/google';
 import Header from '@/app/components/Header';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import { PlayIcon } from '@heroicons/react/24/solid';
+import { MovieRow } from './components/MovieRow';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-
   return (
     <div className='relative h-screen overflow-hidden bg-gradient-to-b lg:h-[140vh]'>
       <Header />
@@ -33,35 +33,20 @@ export default function Home() {
         </div>
 
         <div className='flex space-x-3'>
-          <button
-            className='md:text-xl; flex cursor-pointer items-center gap-x-2 rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5'>
+          <button className='md:text-xl; flex cursor-pointer items-center gap-x-2 rounded bg-white px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5'>
             <PlayIcon className='h-6' />
             Play
           </button>
-          <button
-            className='md:text-xl; flex cursor-pointer items-center gap-x-2 rounded bg-gray-600 px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5'>
+          <button className='md:text-xl; flex cursor-pointer items-center gap-x-2 rounded bg-gray-600 px-5 py-1.5 text-sm font-semibold text-black transition hover:opacity-75 md:px-8 md:py-2.5'>
             <InformationCircleIcon className='h-6' />
             More Info
           </button>
         </div>
 
-        <div className='flex-col space-y-4'>
-          <div className='flex space-x-4 overflow-x-scroll'>
-            {[1,2,3,4,5,].map((index) => (
-              <div key={index} className='group relative h-28 min-w-[200px]
-                transition duration-200 ease-in transform sm:h-36 hover:scale-110 hover:z-50
-              '>
-                <Image
-                  src={`/item_${index}.png`}
-                  alt='MAID'
-                  fill={true}
-                  className='rounded'
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        {MovieRow()}
+        {MovieRow()}
+        {MovieRow()}
       </main>
     </div>
-            );
-          }
+  );
+}
